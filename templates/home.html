@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block title %}Home - Ipswich Retail{% endblock %}
+{% block content %}
+
+<!-- Hero Section -->
+<section class="bg-secondary py-28">
+  <div class="container mx-auto px-4 text-center">
+    <h1 class="text-5xl md:text-7xl font-heading font-medium mb-4 text-dark">
+      Discover Your Signature Scent
+    </h1>
+    <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+      Explore our collection of exquisite perfumes, crafted with the finest ingredients from around the world.
+    </p>
+    <a href="{% url 'products:list' %}" class="bg-primary text-white font-semibold py-3 px-8 rounded-lg hover:bg-primary-dark transition tracking-wider">
+      EXPLORE COLLECTION
+    </a>
+  </div>
+</section>
+
+<!-- Featured Fragrances Section -->
+<section class="py-20">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-heading font-bold text-center mb-2">Featured Fragrances</h2>
+    <p class="text-center text-gray-600 mb-12">A curated selection of our most-loved scents.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- These can later be made dynamic (top 4 products) -->
+      <div class="group cursor-pointer">
+        <div class="bg-secondary rounded-lg overflow-hidden mb-4">
+          <img src="https://placehold.co/400x400/F9F5F2/332C2C?text=Rose+Serenity" alt="Rose Serenity Perfume" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+        </div>
+        <h3 class="font-semibold text-lg font-heading">Rose Serenity</h3>
+        <p class="text-gray-600">£75</p>
+      </div>
+      <div class="group cursor-pointer">
+        <div class="bg-secondary rounded-lg overflow-hidden mb-4">
+          <img src="https://placehold.co/400x400/F9F5F2/332C2C?text=Sandalwood+Dusk" alt="Sandalwood Dusk Perfume" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+        </div>
+        <h3 class="font-semibold text-lg font-heading">Sandalwood Dusk</h3>
+        <p class="text-gray-600">£85</p>
+      </div>
+      <div class="group cursor-pointer">
+        <div class="bg-secondary rounded-lg overflow-hidden mb-4">
+          <img src="https://placehold.co/400x400/F9F5F2/332C2C?text=Citrus+Bloom" alt="Citrus Bloom Perfume" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+        </div>
+        <h3 class="font-semibold text-lg font-heading">Citrus Bloom</h3>
+        <p class="text-gray-600">£65</p>
+      </div>
+      <div class="group cursor-pointer">
+        <div class="bg-secondary rounded-lg overflow-hidden mb-4">
+          <img src="https://placehold.co/400x400/F9F5F2/332C2C?text=Midnight+Oud" alt="Midnight Oud Perfume" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+        </div>
+        <h3 class="font-semibold text-lg font-heading">Midnight Oud</h3>
+        <p class="text-gray-600">£95</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Shop by Category Section -->
+<section class="py-20 bg-secondary">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-heading font-bold text-center mb-12">Shop by Scent Profile</h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+      <a href="{% url 'products:list' %}?category=floral" class="group cursor-pointer">
+        <img src="https://placehold.co/400x500/E5D9D2/332C2C?text=Floral" alt="Floral Scents" class="rounded-lg mb-4 group-hover:opacity-90 transition-opacity">
+        <h3 class="font-heading text-2xl">Floral</h3>
+      </a>
+      <a href="{% url 'products:list' %}?category=woody" class="group cursor-pointer">
+        <img src="https://placehold.co/400x500/D4C8BE/332C2C?text=Woody" alt="Woody Scents" class="rounded-lg mb-4 group-hover:opacity-90 transition-opacity">
+        <h3 class="font-heading text-2xl">Woody</h3>
+      </a>
+      <a href="{% url 'products:list' %}?category=fresh" class="group cursor-pointer">
+        <img src="https://placehold.co/400x500/EAE3DC/332C2C?text=Fresh" alt="Fresh Scents" class="rounded-lg mb-4 group-hover:opacity-90 transition-opacity">
+        <h3 class="font-heading text-2xl">Fresh</h3>
+      </a>
+      <a href="{% url 'products:list' %}?category=oriental" class="group cursor-pointer">
+        <img src="https://placehold.co/400x500/D9CEB2/332C2C?text=Oriental" alt="Oriental Scents" class="rounded-lg mb-4 group-hover:opacity-90 transition-opacity">
+        <h3 class="font-heading text-2xl">Oriental</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Brand Story Section -->
+<section class="py-20">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center gap-12">
+      <div class="md:w-1/2">
+        <img src="https://placehold.co/600x700/F9F5F2/332C2C?text=Aura+Ingredients" alt="Perfume ingredients" class="rounded-lg w-full">
+      </div>
+      <div class="md:w-1/2 text-center md:text-left">
+        <h2 class="text-4xl font-heading font-bold mb-4">The Essence of Aura</h2>
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          At Ipswich Retail, we believe that perfume is an art form. Each bottle contains a symphony of meticulously sourced ingredients, blended to create an unforgettable sensory experience. Our passion is to craft scents that not only smell divine but also evoke memories and emotions.
+        </p>
+        <a href="#" class="text-primary font-bold tracking-wider hover:underline">READ OUR STORY</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

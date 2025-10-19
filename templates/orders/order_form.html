@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Place Order — Ipswich Retail{% endblock %}
+{% block content %}
+<h2>Place order (PoC)</h2>
+<form method="post">
+  {% csrf_token %}
+  <label>Email: <input type="email" name="email" required></label>
+  <button type="submit">Submit</button>
+</form>
+{% endblock %}
