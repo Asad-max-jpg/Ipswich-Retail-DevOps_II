@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Contact - Ipswich Retail{% endblock %}
+{% block content %}
+            <!-- Contact Page -->
+            <div id="contact">
+                 <section class="py-20 bg-secondary">
+                    <div class="container mx-auto px-4 text-center">
+                        <h1 class="text-5xl md:text-7xl font-heading font-medium">Get In Touch</h1>
+                        <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">We'd love to hear from you. Whether you have a question about our products, our story, or anything else, our team is ready to answer all your questions.</p>
+                    </div>
+                </section>
+                <section class="py-20">
+                    <div class="container mx-auto px-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            <!-- Contact Info -->
+                            <div>
+                                <h2 class="text-3xl font-heading font-bold mb-6">Contact Information</h2>
+                                <div class="space-y-4 text-gray-700">
+                                    <p class="flex items-start"><i data-lucide="map-pin" class="w-5 h-5 mr-3 mt-1 text-primary"></i><span>123 Perfume Lane, London, W1 1AA, United Kingdom</span></p>
+                                    <p class="flex items-center"><i data-lucide="mail" class="w-5 h-5 mr-3 text-primary"></i><span>hello@aurafragrance.co.uk</span></p>
+                                    <p class="flex items-center"><i data-lucide="phone" class="w-5 h-5 mr-3 text-primary"></i><span>+44 (0)20 1234 5678</span></p>
+                                </div>
+                                <h3 class="text-2xl font-heading font-bold mt-10 mb-4">Opening Hours</h3>
+                                <div class="space-y-2 text-gray-700">
+                                    <p>Monday - Friday: 9am - 6pm</p>
+                                    <p>Saturday: 10am - 5pm</p>
+                                    <p>Sunday: Closed</p>
+                                </div>
+                            </div>
+                            <!-- Contact Form -->
+                            <div>
+                                <h2 class="text-3xl font-heading font-bold mb-6">Send us a Message</h2>
+                                <form class="space-y-6">
+                                     <div>
+                                        <label for="contact-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                        <input type="text" name="contact-name" id="contact-name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    </div>
+                                    <div>
+                                        <label for="contact-email" class="block text-sm font-medium text-gray-700">Email</label>
+                                        <input type="email" name="contact-email" id="contact-email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    </div>
+                                    <div>
+                                        <label for="contact-message" class="block text-sm font-medium text-gray-700">Message</label>
+                                        <textarea id="contact-message" name="contact-message" rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"></textarea>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">Send Message</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+{% endblock %}            

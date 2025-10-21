@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Your Cart - Ipswich Retail{% endblock %}
+{% block content %}
+<!-- Cart Page -->
+            <div id="cart">
+                <div class="container mx-auto px-4 py-12">
+                    <h1 class="text-5xl font-heading font-bold text-center mb-8">Your Basket</h1>
+                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Cart Items -->
+                        <div class="lg:col-span-2">
+                             <div class="space-y-4">
+                                <!-- Cart Item -->
+                                <div class="flex items-center p-4 border rounded-lg">
+                                    <img src="https://placehold.co/100x100/F9F5F2/332C2C?text=Rose" class="w-24 h-24 rounded-lg object-cover" alt="Rose Serenity">
+                                    <div class="flex-grow ml-4">
+                                        <h2 class="font-semibold font-heading text-xl">Rose Serenity</h2>
+                                        <p class="text-sm text-gray-600">by Ipswich Retail</p>
+                                        <p class="text-sm text-gray-600">Size: 50ml</p>
+                                        <p class="text-sm text-gray-600">Quantity: 1</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-semibold text-lg">£75</p>
+                                        <button class="text-red-500 hover:underline text-sm mt-1">Remove</button>
+                                    </div>
+                                </div>
+                                 <!-- Cart Item -->
+                                <div class="flex items-center p-4 border rounded-lg">
+                                    <img src="https://placehold.co/100x100/F9F5F2/332C2C?text=Sandalwood" class="w-24 h-24 rounded-lg object-cover" alt="Sandalwood Dusk">
+                                    <div class="flex-grow ml-4">
+                                        <h2 class="font-semibold font-heading text-xl">Sandalwood Dusk</h2>
+                                        <p class="text-sm text-gray-600">by Ipswich Retail</p>
+                                        <p class="text-sm text-gray-600">Size: 100ml</p>
+                                        <p class="text-sm text-gray-600">Quantity: 1</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-semibold text-lg">£85</p>
+                                        <button class="text-red-500 hover:underline text-sm mt-1">Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button onclick="showPage('shop')" class="text-dark font-semibold mt-8 hover:underline">← Continue Shopping</button>
+                        </div>
+                        <!-- Order Summary -->
+                        <div class="bg-secondary p-6 rounded-lg">
+                            <h2 class="text-3xl font-heading font-semibold mb-4">Order Summary</h2>
+                            <div class="flex justify-between mb-2">
+                                <span>Subtotal</span>
+                                <span>£160</span>
+                            </div>
+                             <div class="flex justify-between text-gray-600 mb-4">
+                                <span>Shipping</span>
+                                <span>Calculated next step</span>
+                            </div>
+                             <div class="flex justify-between font-bold text-lg border-t pt-4 mt-4">
+                                <span>Total</span>
+                                <span>£160</span>
+                            </div>
+                             <input type="text" placeholder="Enter coupon code here" class="w-full mt-4 p-2 border rounded-lg">
+                            <button onclick="showPage('checkout')" class="w-full bg-primary text-white font-semibold py-3 mt-4 rounded-lg hover:bg-primary-dark transition">Continue to checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

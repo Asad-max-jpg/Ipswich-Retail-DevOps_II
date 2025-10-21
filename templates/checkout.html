@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Checkout - Ipswich Retail{% endblock %}
+{% block content %}
+
+ <!-- Checkout Page -->
+            <div id="checkout">
+                <div class="container mx-auto px-4 py-12">
+                    <h1 class="text-5xl font-heading font-bold text-center mb-2">Checkout</h1>
+                    <div class="text-center text-gray-600 mb-8">
+                        <span>Address</span> → <span>Shipping</span> → <span>Payment</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <!-- Shipping Information -->
+                        <div>
+                             <h2 class="text-3xl font-heading font-semibold mb-4">Shipping Information</h2>
+                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <input type="text" placeholder="First Name" class="w-full p-2 border rounded-lg">
+                                <input type="text" placeholder="Last Name" class="w-full p-2 border rounded-lg">
+                                <input type="text" placeholder="Address" class="sm:col-span-2 w-full p-2 border rounded-lg">
+                                <input type="text" placeholder="Apartment, suite, etc (optional)" class="sm:col-span-2 w-full p-2 border rounded-lg">
+                                <input type="text" placeholder="City" class="w-full p-2 border rounded-lg">
+                                <input type="text" value="United Kingdom" placeholder="Country" class="w-full p-2 border rounded-lg bg-gray-100">
+                                <input type="text" placeholder="Postcode" class="w-full p-2 border rounded-lg">
+                             </div>
+                             <label class="flex items-center mt-4"><input type="checkbox" class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"> <span class="ml-2">Save contact information</span></label>
+                             <button class="w-full bg-primary text-white font-semibold py-3 mt-6 rounded-lg hover:bg-primary-dark transition">Continue to shipping</button>
+                        </div>
+                        <!-- Order Summary -->
+                        <div class="bg-secondary p-6 rounded-lg row-start-1 lg:row-start-auto">
+                             <h2 class="text-3xl font-heading font-semibold mb-4">Your Basket</h2>
+                             <!-- Item -->
+                             <div class="flex items-center mb-4">
+                                <img src="https://placehold.co/80x80/F9F5F2/332C2C?text=Rose" class="w-20 h-20 rounded-lg object-cover" alt="Rose">
+                                <div class="flex-grow ml-4">
+                                    <h3 class="font-semibold font-heading text-lg">Rose Serenity</h3>
+                                    <p class="text-sm text-gray-600">50ml, Qty: 1</p>
+                                </div>
+                                <p>£75</p>
+                            </div>
+                            <!-- Item -->
+                            <div class="flex items-center mb-4">
+                                <img src="https://placehold.co/80x80/F9F5F2/332C2C?text=Sandalwood" class="w-20 h-20 rounded-lg object-cover" alt="Sandalwood">
+                                <div class="flex-grow ml-4">
+                                    <h3 class="font-semibold font-heading text-lg">Sandalwood Dusk</h3>
+                                    <p class="text-sm text-gray-600">100ml, Qty: 1</p>
+                                </div>
+                                <p>£85</p>
+                            </div>
+                            <div class="border-t pt-4 mt-4 space-y-2">
+                                <div class="flex justify-between">
+                                    <span>Subtotal</span>
+                                    <span>£160</span>
+                                </div>
+                                <div class="flex justify-between text-gray-600">
+                                    <span>Shipping</span>
+                                    <span>Free</span>
+                                </div>
+                                <div class="flex justify-between font-bold text-lg">
+                                    <span>Total</span>
+                                    <span>£160</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}  
