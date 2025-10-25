@@ -49,7 +49,7 @@ jobs:
       - name: Run Linter (flake8)
         run: |
           echo "Running code quality checks..."
-          flake8 . --max-line-length=120
+          flake8 --max-line-length=120 --exclude=.venv,migrations,__pycache__,manage.py
 
       - name: Run Django Tests with Coverage
         run: |
