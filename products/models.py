@@ -3,7 +3,6 @@ from django.utils.text import slugify
 from django.db.models.query import QuerySet
 
 
-
 class Category(models.Model):
     name = models.CharField(max_length=120, unique=True)
     slug = models.SlugField(unique=True, blank=True)
