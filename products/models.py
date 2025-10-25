@@ -23,7 +23,12 @@ class Product(models.Model):
     image = models.URLField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def clean(self):
+        if self.price is not None and self.price < 0:
+            raise ValueError("Price cannot be negative")
+
     def save(self, *args, **kwargs):
+        self.clean()
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)

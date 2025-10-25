@@ -1,0 +1,90 @@
+# .github/workflows/django-ci.yml
+name: Django CI Pipeline
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+
+jobs:
+  test:                               
+    name: Run Django Tests and Linting
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:14
+        env:
+          POSTGRES_USER: django
+          POSTGRES_PASSWORD: django
+          POSTGRES_DB: django_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      DJANGO_SETTINGS_MODULE: ipswich_retail.settings
+      DATABASE_URL: postgres://django:django@localhost:5432/django_db
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install coverage flake8 pytest pytest-django
+
+      - name: Run Linter (flake8)
+        run: |
+          echo "Running code quality checks..."
+          flake8 . --max-line-length=120
+
+      - name: Run Django Tests with Coverage
+        run: |
+          echo "Running test suite..."
+          coverage run manage.py test
+          coverage report
+          coverage xml
+
+      - name: Upload Coverage Report to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Notify on Failure
+        if: failure()
+        run: echo "❌ CI failed. Please review the logs."
+
+  build:                             
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    needs: test                      # ensures this only runs if test job passes
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: |
+          docker build -t ipswich-retail:latest .
+
+      - name: Save Docker Image
+        run: |
+          docker save ipswich-retail:latest | gzip > ipswich-retail.tar.gz
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docker-build
+          path: ipswich-retail.tar.gz
