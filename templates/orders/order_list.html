@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Your Orders</h2>
+    {% if orders %}
+        <div class="order-list">
+            {% for order in orders %}
+                <div class="order-item">
+                    <h3>Order #{{ order.pk }}</h3>
+                    <p>Date: {{ order.created_at|date:"F j, Y" }}</p>
+                    <p>Email: {{ order.email }}</p>
+                    <p>Status: {% if order.shipped %}Shipped{% else %}Processing{% endif %}</p>
+                    <h4>Items:</h4>
+                    <ul>
+                    {% for item in order.items.all %}
+                        <li>{{ item.quantity }}x {{ item.product.title }} - £{{ item.price }}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>You haven't placed any orders yet.</p>
+    {% endif %}
+</div>
+{% endblock %}
