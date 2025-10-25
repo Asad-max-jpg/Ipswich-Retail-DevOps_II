@@ -89,7 +89,10 @@ class ProductViewsTest(TestCase):
 
     def test_product_detail_view(self):
         """Ensure product detail page loads and displays product info."""
-        response = self.client.get(reverse('products:detail', kwargs={'slug': self.product.slug}))
+        response = self.client.get(
+            reverse(
+                'products:detail', kwargs={
+                    'slug': self.product.slug}))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Test Product")
         self.assertContains(response, "99.99")
@@ -97,5 +100,8 @@ class ProductViewsTest(TestCase):
 
     def test_non_existent_product_returns_404(self):
         """Ensure accessing non-existent product returns 404."""
-        response = self.client.get(reverse('products:detail', kwargs={'slug': 'fake-product'}))
+        response = self.client.get(
+            reverse(
+                'products:detail', kwargs={
+                    'slug': 'fake-product'}))
         self.assertEqual(response.status_code, 404)

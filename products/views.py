@@ -21,4 +21,5 @@ def product_list(request):
 def product_detail(request, slug):
     """Display a single product."""
     product = get_object_or_404(Product, slug=slug)
-    return render(request, 'products/product_detail.html', {'product': product})
+    return render(request, 'products/product_detail.html',
+                  {'product': product})
