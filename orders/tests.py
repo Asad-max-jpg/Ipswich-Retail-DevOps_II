@@ -40,7 +40,8 @@ class OrderModelTest(TestCase):
         self.assertEqual(self.order.user, self.user)
         self.assertFalse(self.order.shipped)
         self.assertTrue(isinstance(self.order, Order))
-        self.assertEqual(str(self.order), f"Order {self.order.pk} - test@example.com")
+        self.assertEqual(str(self.order),
+                         f"Order {self.order.pk} - test@example.com")
 
     def test_order_item_creation(self):
         """Ensure order items store correct quantity and product link."""
@@ -102,7 +103,11 @@ class OrderViewsTest(TestCase):
         """Full integration test: product → order → order item creation."""
         self.client.login(username='testuser', password='testpass123')
         order = Order.objects.create(user=self.user, email='test@example.com')
-        OrderItem.objects.create(order=order, product=self.product, quantity=3, price=self.product.price)
+        OrderItem.objects.create(
+            order=order,
+            product=self.product,
+            quantity=3,
+            price=self.product.price)
         response = self.client.get(reverse('orders:list'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Test Product")

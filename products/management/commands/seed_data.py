@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from products.models import Category, Product
 
+
 class Command(BaseCommand):
     help = "Seed sample fragrance categories and products for PoC"
 
@@ -67,4 +68,5 @@ class Command(BaseCommand):
                     "image": prod["image"]
                 }
             )
-        self.stdout.write(self.style.SUCCESS("✅ Sample fragrance data seeded successfully."))
+        self.stdout.write(self.style.SUCCESS(
+            "✅ Sample fragrance data seeded successfully."))

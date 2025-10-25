@@ -14,5 +14,3 @@ urlpatterns = [
     path('our-story/', views.our_story, name='our_story'),
     path('admin/', admin.site.urls),
 ]
-
-    

@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.db.models.query import QuerySet
 
+
 class Category(models.Model):
     name = models.CharField(max_length=120, unique=True)
     slug = models.SlugField(unique=True, blank=True)
@@ -14,13 +15,15 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
 class Product(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, blank=True)
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     inventory = models.PositiveIntegerField(default=0)
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True)
     image = models.URLField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -65,6 +68,7 @@ class Product(models.Model):
 
 class ProductQuerySet(QuerySet):
     """QuerySet that understands legacy lookup names ('name' -> 'title', 'stock' -> 'inventory')."""
+
     def _translate_kwargs(self, kwargs):
         new = {}
         for key, val in kwargs.items():
@@ -103,5 +107,6 @@ class ProductManager(models.Manager):
         return self.get_queryset().get(*args, **kwargs)
 
 
-# Make the custom manager the default so tests that filter by 'name' or 'stock' work
+# Make the custom manager the default so tests that filter by 'name' or
+# 'stock' work
 Product.add_to_class('objects', ProductManager())

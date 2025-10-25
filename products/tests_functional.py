@@ -21,6 +21,9 @@ class ProductViewTest(TestCase):
 
     def test_product_detail_view(self):
         """Ensure product detail page displays correct information"""
-        response = self.client.get(reverse('products:detail', args=[self.product.slug]))
+        response = self.client.get(
+            reverse(
+                'products:detail', args=[
+                    self.product.slug]))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, self.product.title)

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Product, Category
 
+
 def product_list(request):
     """Display all products and allow filtering by category."""
     products = Product.objects.all()
@@ -20,4 +21,5 @@ def product_list(request):
 def product_detail(request, slug):
     """Display a single product."""
     product = get_object_or_404(Product, slug=slug)
-    return render(request, 'products/product_detail.html', {'product': product})
+    return render(request, 'products/product_detail.html',
+                  {'product': product})
