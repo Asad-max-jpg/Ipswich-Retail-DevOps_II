@@ -91,12 +91,58 @@ Notes about Docker setup:
 
 ## Running tests
 
-Install test requirements and run pytest:
+Test dependencies are included in `requirements.txt`. To run the test suite locally, first activate your virtual environment and install dependencies, then run tests using `pytest` or Django's test runner.
+
+Example (local):
 
 ```bash
-pip install -r requirements-test.txt
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+python manage.py migrate
+# run all tests with pytest
 pytest
+# or run Django's test runner
+python manage.py test
 ```
+
+Run a single test file or test case with pytest:
+
+```bash
+pytest products/tests.py::TestProductModel::test_product_str
+```
+
+Collect coverage (optional, if `coverage` is installed):
+
+```bash
+coverage run -m pytest
+coverage report -m
+```
+
+Running tests inside Docker (compose):
+
+```bash
+docker compose run --rm web python manage.py test
+```
+
+## CI / CD (high level)
+
+This project is designed to be included in a CI/CD pipeline (GitHub Actions). A typical pipeline includes the following jobs:
+
+- lint: run linters such as `flake8` and optionally formatting checks (`black --check`).
+- test: install dependencies, run migrations (or use an in-memory/test DB), and execute the test suite with `pytest` or `manage.py test`.
+- build: build the Docker image using the provided `Dockerfile`.
+- publish: push the built image to a container registry (Docker Hub, GitHub Container Registry, etc.).
+- deploy: deploy the image to your hosting platform (Kubernetes, ECS, a PaaS, or a VM).
+
+A minimal GitHub Actions workflow would:
+
+1. Checkout the code
+2. Set up Python
+3. Install dependencies
+4. Run lint and tests
+5. Build and (optionally) push Docker image on branch protection or tag events
 
 ## Common management commands
 
