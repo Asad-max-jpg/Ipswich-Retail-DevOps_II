@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from .models import Order
-from .models import Order
 from django.views.decorators.http import require_http_methods
 
 
@@ -8,7 +7,6 @@ from django.views.decorators.http import require_http_methods
 def order_create(request):
     if not request.user.is_authenticated:
         return redirect('login')
-
 
     if request.method == "POST":
         email = request.POST.get('email')
@@ -20,7 +18,6 @@ def order_create(request):
         return redirect('orders:list')
 
     return render(request, 'orders/order_form.html')
-
 
 
 def order_list(request):
