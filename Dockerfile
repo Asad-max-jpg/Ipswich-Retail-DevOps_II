@@ -15,4 +15,4 @@ COPY . /app
 RUN python manage.py collectstatic --noinput || true
 
 EXPOSE 8000
-CMD ["sh", "-c", "python manage.py migrate && python manage.py collectstatic --noinput && python manage.py seed_data || true && gunicorn ipswich_retail.wsgi:application --bind 0.0.0.0:8000"]
+CMD ["sh", "-c", "python manage.py migrate && python manage.py seed_data && python manage.py collectstatic --noinput && gunicorn ipswich_retail.wsgi:application --bind 0.0.0.0:8000"]
