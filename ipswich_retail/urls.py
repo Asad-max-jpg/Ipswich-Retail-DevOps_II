@@ -13,4 +13,5 @@ urlpatterns = [
     path('shop/', include('products.urls', namespace='products')),
     path('our-story/', views.our_story, name='our_story'),
     path('admin/', admin.site.urls),
+    path('', include('django_prometheus.urls')),
 ]
