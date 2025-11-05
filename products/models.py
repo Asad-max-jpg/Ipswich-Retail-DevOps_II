@@ -24,6 +24,9 @@ class Product(models.Model):
     inventory = models.PositiveIntegerField(default=0)
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True)
+    # If no image is provided, use a small placeholder so admin/site doesn't show
+    # a broken image icon. We set the default at save-time so this change does
+    # not require a database migration.
     image = models.URLField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -49,6 +52,12 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         self.clean()
+        # Provide a default placeholder image when none is supplied. Doing
+        # this here avoids needing a schema migration (no default field
+        # change) and ensures both admin-created and programmatically-created
+        # products get a valid image URL.
+        if not self.image:
+            self.image = 'https://placehold.co/400x400/F9F5F2/332C2C?text=No+Image'
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
